@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NAvatar, NButton, NDivider, NListItem, NP, NSpace, NThing, NTime, useDialog, useMessage } from 'naive-ui'
+import { NAvatar, NButton, NListItem, NP, NSpace, NThing, NTime } from 'naive-ui'
 import type { MessageFetch } from '../api'
 import { createReplyDialog } from '../util/reply-dialog'
 import MarkdownPreviewer from './MarkdownPreviewer.vue'
@@ -16,38 +16,36 @@ const { message } = defineProps<{
       <template #avatar>
         <NAvatar
           :src="message.avatar"
-          :size="64"
+          :size="48"
           round
         />
       </template>
 
       <template #header>
-        <NButton text size="large" tag="a" :href="message.site" style="font-weight: 400">
-          {{ message.name }}
-        </NButton>
-      </template>
+        <NSpace :size="0" vertical>
+          <NSpace align="end">
+            <NButton text :href="message.site" style="font-weight: 600; font-size: medium">
+              {{ message.name }}
+            </NButton>
 
-      <template #footer>
-        <NSpace :size="0">
+            <NP :depth="3">
+              #{{ message.id }}
+              <template v-if="message.reply !== -1">
+                -> #{{ message.reply }}
+              </template>
+            </NP>
+          </NSpace>
+
           <NP :depth="3">
             <NTime :time="message.date" type="date" />
           </NP>
-          <NDivider vertical />
-          <NButton text size="small" @click="createReplyDialog(message.id, `Reply to #${message.id}`)">
-            <NP :depth="3">
-              Reply
-            </NP>
-          </NButton>
         </NSpace>
       </template>
 
       <template #header-extra>
-        <NP :depth="3">
-          #{{ message.id }}
-          <template v-if="message.reply !== -1">
-            -> #{{ message.reply }}
-          </template>
-        </NP>
+        <NButton text size="small" @click="createReplyDialog(message.id, `Reply to #${message.id}`)">
+          Reply
+        </NButton>
       </template>
 
       <template #action>
