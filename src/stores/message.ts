@@ -4,10 +4,6 @@ import type { MessageFetch } from '../api'
 
 const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
 
-export function getAvatarUrl(avatar: string) {
-  return GRAVATAR_URL + avatar
-}
-
 export const useMessageStore = defineStore('message', () => {
   // Raw messages got from backend.
   const rawMessages = ref<MessageFetch[]>([])
@@ -16,7 +12,7 @@ export const useMessageStore = defineStore('message', () => {
    * Messages that have avatar URL converted.
    */
   const messages = computed(() => rawMessages.value.map((m) => {
-    return { ...m, avatar: getAvatarUrl(m.avatar) }
+    return { ...m, avatar: GRAVATAR_URL + m.avatar }
   }))
 
   /**
