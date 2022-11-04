@@ -22,8 +22,8 @@ export interface MessageUpload {
   site: string
 
   /**
-   * Which the comment replies to.
-   * If it doesn't reply to any comment, it will be -1.
+   * Which message it replies to.
+   * If it doesn't reply to any message, it will be -1.
    */
   reply: number
 
