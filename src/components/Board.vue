@@ -11,6 +11,7 @@ useMessageStore().setMessages([
     reply: -1,
     avatar: '/avatar.jpg',
     date: Date.now(),
+    site: 'https://kifuan.me',
   },
   {
     id: 2,

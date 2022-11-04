@@ -21,7 +21,9 @@ const { message } = defineProps<{
       </template>
 
       <template #header>
-        {{ message.name }}
+        <NButton text size="large" tag="a" :href="message.site" style="font-weight: 400">
+          {{ message.name }}
+        </NButton>
       </template>
 
       <template #footer>
