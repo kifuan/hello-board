@@ -1,34 +1,16 @@
 <script setup lang="ts">
-import { NAvatar, NButton, NListItem, NP, NSpace, NThing, NTime, useDialog } from 'naive-ui'
-import { computed, h } from 'vue'
+import { NAvatar, NButton, NDivider, NListItem, NP, NSpace, NThing, NTime } from 'naive-ui'
 import type { MessageFetch } from '../api'
-import { useMessageStore } from '../stores/message'
 import MarkdownPreviewer from './MarkdownPreviewer.vue'
 import MessageList from './MessageList.vue'
 
 const { message } = defineProps<{
   message: MessageFetch
 }>()
-
-const store = useMessageStore()
-const dialog = useDialog()
-
-const repliesCount = computed(() => store.getReplies(message.id).length)
-
-function showReplies() {
-  const count = repliesCount.value
-  if (count === 0)
-    return
-
-  dialog.create({
-    title: `Replies to #${message.id}`,
-    content: () => h(MessageList, { reply: message.id }),
-  })
-}
 </script>
 
 <template>
-  <NListItem @click="showReplies">
+  <NListItem>
     <NThing content-indented>
       <template #avatar>
         <NAvatar
@@ -43,13 +25,14 @@ function showReplies() {
       </template>
 
       <template #footer>
-        <NSpace justify="space-between">
+        <NSpace :size="0">
           <NP :depth="3">
             <NTime :time="message.date" type="date" />
           </NP>
+          <NDivider vertical />
           <NButton text size="small">
             <NP :depth="3">
-              {{ repliesCount }} Replies
+              Reply
             </NP>
           </NButton>
         </NSpace>
@@ -58,7 +41,14 @@ function showReplies() {
       <template #header-extra>
         <NP :depth="3">
           #{{ message.id }}
+          <template v-if="message.reply !== -1">
+            -> #{{ message.reply }}
+          </template>
         </NP>
+      </template>
+
+      <template #action>
+        <MessageList :reply="message.id" />
       </template>
 
       <MarkdownPreviewer :content="message.content" />

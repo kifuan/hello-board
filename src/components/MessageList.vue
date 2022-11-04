@@ -11,11 +11,11 @@ const { reply } = withDefaults(defineProps<{
 })
 
 const store = useMessageStore()
-const messages = computed(() => store.getReplies(reply))
+const messages = computed(() => store.getRootReplies(reply))
 </script>
 
 <template>
-  <NList v-if="messages" hoverable clickable>
+  <NList v-if="messages" :show-divider="false">
     <Message
       v-for="m in messages"
       :key="m.id"
