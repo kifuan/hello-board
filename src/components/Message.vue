@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { NAvatar, NButton, NDivider, NListItem, NP, NSpace, NThing, NTime } from 'naive-ui'
+import { NAvatar, NButton, NDivider, NListItem, NP, NSpace, NThing, NTime, useDialog, useMessage } from 'naive-ui'
 import type { MessageFetch } from '../api'
+import { createReplyDialog } from '../util/reply-dialog'
 import MarkdownPreviewer from './MarkdownPreviewer.vue'
 import MessageList from './MessageList.vue'
 
 const { message } = defineProps<{
   message: MessageFetch
 }>()
+
+const messageApi = useMessage()
+const dialogApi = useDialog()
 </script>
 
 <template>
@@ -32,7 +36,7 @@ const { message } = defineProps<{
             <NTime :time="message.date" type="date" />
           </NP>
           <NDivider vertical />
-          <NButton text size="small">
+          <NButton text size="small" @click="createReplyDialog(message.id, `Reply to #${message.id}`, messageApi, dialogApi)">
             <NP :depth="3">
               Reply
             </NP>

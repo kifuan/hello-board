@@ -19,7 +19,7 @@ export interface MessageUpload {
   /**
    * Personal site.
    */
-  site?: string
+  site: string
 
   /**
    * Which the comment replies to.

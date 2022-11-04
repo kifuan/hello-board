@@ -30,10 +30,6 @@ const rules: FormRules = {
       return true
     },
   },
-  mailNotice: {
-    // Shows a red "*" with the label.
-    required: true,
-  },
   content: {
     required: true,
     message: 'Please input your content.',
@@ -45,16 +41,19 @@ const rules: FormRules = {
 <template>
   <NForm :model="message" class="form" :rules="rules">
     <NFormItem path="email" label="Email(won't be displayed, only for Gravatar)">
-      <NInput v-model:value="message.email" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
+      <NInput v-model:value="message.email" placeholder="name@example.com" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
     </NFormItem>
     <NFormItem path="name" label="Name">
-      <NInput v-model:value="message.name" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
+      <NInput v-model:value="message.name" placeholder="Foo Bar" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
+    </NFormItem>
+    <NFormItem path="site" label="Your site">
+      <NInput v-model:value="message.site" placeholder="https://example.com" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
     </NFormItem>
     <NFormItem path="mailNotice" label="Mail notice">
       <NSwitch v-model:value="message.mailNotice" />
     </NFormItem>
     <NFormItem path="content" label="Content(Markdown)">
-      <NInput v-model:value="message.content" type="textarea" show-count maxlength="256" clearable @keydown.enter.prevent />
+      <NInput v-model:value="message.content" placeholder="Hello, world!" type="textarea" show-count maxlength="256" clearable />
     </NFormItem>
   </NForm>
 </template>

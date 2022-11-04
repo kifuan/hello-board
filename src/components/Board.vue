@@ -19,6 +19,7 @@ useMessageStore().setMessages([
     content: 'Hello world2',
     reply: -1,
     avatar: '/avatar.jpg',
+    site: '',
     date: Date.now(),
   },
   {
@@ -27,6 +28,7 @@ useMessageStore().setMessages([
     content: 'Hello world 3',
     reply: 1,
     avatar: '/avatar.jpg',
+    site: '',
     date: Date.now(),
   },
   {
@@ -35,6 +37,7 @@ useMessageStore().setMessages([
     content: 'Hello world 4',
     reply: 3,
     avatar: '/avatar.jpg',
+    site: '',
     date: Date.now(),
   },
 ])

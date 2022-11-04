@@ -8,6 +8,7 @@ export const useReplyStore = defineStore('reply', () => {
     name: '',
     email: '',
     content: '',
+    site: '',
     reply: -1,
   } as MessageUpload)
 
