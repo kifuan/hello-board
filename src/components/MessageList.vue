@@ -4,14 +4,14 @@ import { computed } from 'vue'
 import { useMessageStore } from '../stores/message'
 import Message from './Message.vue'
 
-const { replyTo } = withDefaults(defineProps<{
-  replyTo?: number
+const { reply } = withDefaults(defineProps<{
+  reply?: number
 }>(), {
-  replyTo: -1,
+  reply: -1,
 })
 
 const store = useMessageStore()
-const messages = computed(() => store.getReplies(replyTo))
+const messages = computed(() => store.getReplies(reply))
 </script>
 
 <template>

@@ -22,7 +22,7 @@ function showReplies() {
 
   dialog.create({
     title: `Replies to #${message.id}`,
-    content: () => h(MessageList, { replyTo: message.id }),
+    content: () => h(MessageList, { reply: message.id }),
   })
 }
 </script>
