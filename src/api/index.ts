@@ -23,7 +23,6 @@ export interface MessageUpload {
 
   /**
    * Which the comment replies to.
-   * 
    * If it doesn't reply to any comment, it will be -1.
    */
   reply: number
@@ -33,7 +32,6 @@ export interface MessageUpload {
    */
   mailNotice: boolean
 }
-
 
 export type MessageFetch = Omit<MessageUpload, 'email' | 'mailNotice'> & {
   /**

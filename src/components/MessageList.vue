@@ -1,18 +1,20 @@
 <script setup lang="ts">
+import { NList, NListItem } from 'naive-ui'
 import type { MessageFetch } from '../api'
+import Message from './Message.vue'
 
 defineProps<{
   messages: MessageFetch[]
 }>()
-
-function click() {
-  alert('TEST')
-}
 </script>
 
 <template>
-  <div class="flex flex-row w-100 justify-between">
-    <div class="text-xl">{{ messages.length }} MESSAGES</div>
-    <a href="javascript:void(0)" @click="click" class="underline text-xl decoration-sky-300 hover:decoration-sky-400 active:decoration-sky-500">POST</a>
-  </div>
+  <NList clickable hoverable>
+    <NListItem
+      v-for="m in messages"
+      :key="m.id"
+    >
+      <Message :message="m" />
+    </NListItem>
+  </NList>
 </template>
