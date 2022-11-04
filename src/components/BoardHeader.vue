@@ -4,8 +4,6 @@ import { useMessageStore } from '../stores/message'
 import { createReplyDialog } from '../util/reply-dialog'
 
 const messageStore = useMessageStore()
-const dialog = useDialog()
-const message = useMessage()
 </script>
 
 <template>
@@ -13,7 +11,7 @@ const message = useMessage()
     <NH2>
       {{ messageStore.messages.length }} Messages
     </NH2>
-    <NButton ghost @click="createReplyDialog(-1, 'Add a message', message, dialog)">
+    <NButton ghost @click="createReplyDialog(-1, 'Add a message')">
       Add
     </NButton>
   </NSpace>

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useProviderStore } from '../stores/provider'
 
 export interface Message {
   /**
@@ -56,4 +57,21 @@ export type MessageFetch = Omit<Message, 'email' | 'mailNotice'>
 export const api = axios.create({
   baseURL: '/api/',
   timeout: 5000,
+})
+
+api.interceptors.request.use((req) => {
+  useProviderStore().loadingBar.start()
+  return req
+})
+
+api.interceptors.response.use((res) => {
+  useProviderStore().loadingBar.finish()
+  return res
+}, async (err) => {
+  const provider = useProviderStore()
+  provider.loadingBar.error()
+  if (axios.isAxiosError(err) && err.response !== undefined) {
+    provider.message.error(err.response.statusText)
+    throw err
+  }
 })

@@ -8,9 +8,6 @@ import MessageList from './MessageList.vue'
 const { message } = defineProps<{
   message: MessageFetch
 }>()
-
-const messageApi = useMessage()
-const dialogApi = useDialog()
 </script>
 
 <template>
@@ -36,7 +33,7 @@ const dialogApi = useDialog()
             <NTime :time="message.date" type="date" />
           </NP>
           <NDivider vertical />
-          <NButton text size="small" @click="createReplyDialog(message.id, `Reply to #${message.id}`, messageApi, dialogApi)">
+          <NButton text size="small" @click="createReplyDialog(message.id, `Reply to #${message.id}`)">
             <NP :depth="3">
               Reply
             </NP>
