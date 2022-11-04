@@ -1,6 +1,22 @@
 import axios from 'axios'
 
-export interface MessageUpload {
+export interface Message {
+  /**
+   * The message id.
+   */
+  id: number
+
+  /**
+   * The date it was sent.
+   */
+  date: number
+
+  /**
+   * The avatar(md5).
+   * Should be joined with gravatar url.
+   */
+  avatar: string
+
   /**
    * The email.
    */
@@ -33,22 +49,9 @@ export interface MessageUpload {
   mailNotice: boolean
 }
 
-export type MessageFetch = Omit<MessageUpload, 'email' | 'mailNotice'> & {
-  /**
-   * The id.
-   */
-  id: number
+export type MessageUpload = Omit<Message, 'id' | 'avatar' | 'date'>
 
-  /**
-   * The avatar url.
-   */
-  avatar: string
-
-  /**
-   * The date in timestamp.
-   */
-  date: number
-}
+export type MessageFetch = Omit<Message, 'email' | 'mailNotice'>
 
 export const api = axios.create({
   baseURL: '/api/',
