@@ -71,7 +71,8 @@ api.interceptors.response.use((res) => {
   const provider = useProviderStore()
   provider.loadingBar.error()
   if (axios.isAxiosError(err) && err.response !== undefined) {
-    provider.message.error(err.response.statusText)
+    const message = err.response.data?.message as string | undefined
+    provider.message.error(message ?? err.response.statusText)
     throw err
   }
 })
