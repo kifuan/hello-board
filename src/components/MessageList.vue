@@ -1,20 +1,25 @@
 <script setup lang="ts">
-import { NList, NListItem } from 'naive-ui'
-import type { MessageFetch } from '../api'
+import { NList } from 'naive-ui'
+import { computed } from 'vue'
+import { useMessageStore } from '../stores/message'
 import Message from './Message.vue'
 
-defineProps<{
-  messages: MessageFetch[]
-}>()
+const { replyTo } = withDefaults(defineProps<{
+  replyTo?: number
+}>(), {
+  replyTo: -1,
+})
+
+const store = useMessageStore()
+const messages = computed(() => store.getReplies(replyTo))
 </script>
 
 <template>
-  <NList clickable hoverable>
-    <NListItem
+  <NList v-if="messages" hoverable clickable>
+    <Message
       v-for="m in messages"
       :key="m.id"
-    >
-      <Message :message="m" />
-    </NListItem>
+      :message="m"
+    />
   </NList>
 </template>

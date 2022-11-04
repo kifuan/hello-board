@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { MessageFetch } from '../api'
+import { useMessageStore } from '../stores/message'
 import BoardHeader from './BoardHeader.vue'
 import MessageList from './MessageList.vue'
 
-const messages: MessageFetch[] = [
+useMessageStore().setMessages([
   {
     id: 1,
     name: 'Username',
@@ -12,10 +13,18 @@ const messages: MessageFetch[] = [
     avatar: '/avatar.jpg',
     date: Date.now(),
   },
-]
+  {
+    id: 2,
+    name: 'Username2',
+    content: 'Hello world 2',
+    reply: 1,
+    avatar: '/avatar.jpg',
+    date: Date.now(),
+  },
+])
 </script>
 
 <template>
   <BoardHeader :count="10" />
-  <MessageList :messages="messages" />
+  <MessageList />
 </template>
