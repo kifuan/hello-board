@@ -31,6 +31,10 @@ export const useMessageStore = defineStore('message', () => {
   // Inserts after posting to server
   // to avoid get the same message array twice.
   function insertCachedMessage(m: MessageFetch) {
+    // Only insert if it is the first page.
+    if (_page.value !== 1)
+      return
+
     messages.value.unshift(m)
   }
 
