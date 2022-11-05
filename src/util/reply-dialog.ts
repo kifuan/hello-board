@@ -1,4 +1,3 @@
-import { h } from 'vue'
 import type { MessageFetch } from '../api'
 import { api } from '../api'
 import ReplyForm from '../components/ReplyForm.vue'

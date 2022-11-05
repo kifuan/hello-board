@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { NCard, NGrid, NGridItem, NImage, NTooltip } from 'naive-ui'
-import { useClipboard } from '@vueuse/core'
 import type { Emoji } from '../util/emoji'
 import { EMOJI_SIZE_PX, emojis } from '../util/emoji'
 

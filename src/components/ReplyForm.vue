@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import type { FormItemRule, FormRules } from 'naive-ui'
-import { NForm, NFormItem, NInput, NSwitch } from 'naive-ui'
-import { storeToRefs } from 'pinia'
 import { useReplyStore } from '../stores/reply'
-import EmojiDropdown from './EmojiDropdown.vue'
 
 const { reply } = defineProps<{
   reply: number

@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { DropdownOption } from 'naive-ui'
-import { NButton, NDropdown, NIcon } from 'naive-ui'
-import { h } from 'vue'
 import EmojiPanel from './EmojiPanel.vue'
 
 const options: DropdownOption[] = [

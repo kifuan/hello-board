@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { NSkeleton, NThing } from 'naive-ui'
-</script>
-
 <template>
   <NThing content-indented>
     <template #avatar>

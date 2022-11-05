@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { NList, NListItem, NPagination } from 'naive-ui'
-import { computed } from 'vue'
 import { useMessageStore } from '../stores/message'
-import Message from './Message.vue'
-import MessageSkeleton from './MessageSkeleton.vue'
 
 const { reply } = withDefaults(defineProps<{
   reply?: number

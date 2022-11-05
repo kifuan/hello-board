@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { NAvatar, NButton, NP, NSpace, NTag, NThing, NTime } from 'naive-ui'
 import type { MessageFetch } from '../api'
 import { createReplyDialog } from '../util/reply-dialog'
-import MarkdownPreviewer from './MarkdownPreviewer.vue'
-import MessageList from './MessageList.vue'
 
 const { message } = defineProps<{
   message: MessageFetch

@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { NCard, NH1, NH3, NPagination, NSpace } from 'naive-ui'
-import { storeToRefs } from 'pinia'
 import { useMessageStore } from '../stores/message'
-import BoardHeader from './BoardHeader.vue'
-import MessageList from './MessageList.vue'
 
 const store = useMessageStore()
 const loading = ref(true)
