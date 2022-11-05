@@ -3,13 +3,13 @@ import { NButton, NH3, NNumberAnimation, NSpace } from 'naive-ui'
 import { useMessageStore } from '../stores/message'
 import { createReplyDialog } from '../util/reply-dialog'
 
-const messageStore = useMessageStore()
+const store = useMessageStore()
 </script>
 
 <template>
   <NSpace justify="space-between">
     <NH3>
-      <NNumberAnimation :from="0" :to="messageStore.messages.length" />
+      <NNumberAnimation :from="0" :to="store.pageInfo.total" />
       Messages
     </NH3>
     <NButton type="success" ghost @click="createReplyDialog(-1, 'Add a message')">

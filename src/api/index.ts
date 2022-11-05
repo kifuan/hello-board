@@ -1,6 +1,18 @@
 import axios from 'axios'
 import { useProviderStore } from '../stores/provider'
 
+export interface PageInfo {
+  /**
+   * Page size.
+   */
+  size: number
+
+  /**
+   * Total count.
+   */
+  total: number
+}
+
 export interface Message {
   /**
    * The message id.
