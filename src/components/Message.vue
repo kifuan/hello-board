@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { MessageFetch } from '../api'
 import { createReplyDialog } from '../util/reply-dialog'
+import { useMessageCompStore } from '../stores/message-comp'
 
 const { message } = defineProps<{
   message: MessageFetch
@@ -8,7 +9,11 @@ const { message } = defineProps<{
 
 const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
 
-const AsyncMarkdownPreviewer = defineAsyncComponent(() => import('./MarkdownPreviewer.vue'))
+const store = useMessageCompStore()
+
+onMounted(() => {
+  store.finishLoading()
+})
 </script>
 
 <template>
@@ -54,6 +59,6 @@ const AsyncMarkdownPreviewer = defineAsyncComponent(() => import('./MarkdownPrev
       <MessageList :reply="message.id" :loading="false" />
     </template>
 
-    <AsyncMarkdownPreviewer :content="message.content" />
+    <MarkdownPreviewer :content="message.content" />
   </NThing>
 </template>
