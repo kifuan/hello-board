@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NButton, NH2, NSpace, useDialog, useMessage } from 'naive-ui'
+import { NButton, NH1, NH2, NH3, NSpace } from 'naive-ui'
 import { useMessageStore } from '../stores/message'
 import { createReplyDialog } from '../util/reply-dialog'
 
@@ -8,9 +8,9 @@ const messageStore = useMessageStore()
 
 <template>
   <NSpace justify="space-between">
-    <NH2>
+    <NH3>
       {{ messageStore.messages.length }} Messages
-    </NH2>
+    </NH3>
     <NButton ghost @click="createReplyDialog(-1, 'Add a message')">
       Add
     </NButton>
