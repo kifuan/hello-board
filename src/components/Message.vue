@@ -31,9 +31,6 @@ const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
 
           <NP :depth="3">
             #{{ message.id }}
-            <template v-if="message.reply !== -1">
-              -> #{{ message.reply }}
-            </template>
           </NP>
         </NSpace>
 
