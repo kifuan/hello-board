@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import MarkdownIt from 'markdown-it'
 import { computed } from 'vue'
+import { createMarkdownIt } from '../util/markdown'
 
 const { content } = defineProps<{
   content: string
 }>()
 
-const md = MarkdownIt()
+const md = createMarkdownIt()
 
 const html = computed(() => md.render(content))
 </script>

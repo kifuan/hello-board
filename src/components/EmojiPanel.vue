@@ -2,7 +2,8 @@
 import { NCard, NGrid, NGridItem, NImage, NTooltip } from 'naive-ui'
 import { useClipboard } from '@vueuse/core'
 import type { Emoji } from '../util/emoji'
-import { emojis } from '../util/emoji'
+import { EMOJI_SIZE_PX, emojis } from '../util/emoji'
+
 import { useProviderStore } from '../stores/provider'
 
 const clipboard = useClipboard()
@@ -23,7 +24,8 @@ function handleClick(emoji: Emoji) {
             <NImage
               preview-disabled
               :src="emoji.url"
-              :height="40"
+              :width="EMOJI_SIZE_PX"
+              :height="EMOJI_SIZE_PX"
               @click="handleClick(emoji)"
             />
           </template>

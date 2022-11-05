@@ -3,6 +3,8 @@ export interface Emoji {
   url: string
 }
 
+export const EMOJI_SIZE_PX = 35
+
 export const emojis: Emoji[] = [
   {
     name: '永雏塔菲_NO喵!',
