@@ -14,7 +14,11 @@ export const useMessageStore = defineStore('message', () => {
     set: setPage,
   })
 
-  const pageInfo = ref<PageInfo>({ size: 0, total: 0 })
+  const pageInfo = ref<PageInfo>({
+    pageSize: 0,
+    totalCount: 0,
+    rootCount: 0,
+  })
 
   async function setPage(p: number) {
     _page.value = p
