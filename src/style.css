@@ -6,3 +6,7 @@ body {
   background-color: #fafafa;
   padding: 2rem 0;
 }
+
+html, body, #app {
+  height: 100%;
+}
