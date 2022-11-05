@@ -2,6 +2,8 @@
 
 A message board based on `Vue.js` and `Golang`.
 
+Here is the [backend server repository](https://github.com/kifuan/hello-board-server).
+
 # Features
 
 + Avatars
