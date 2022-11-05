@@ -55,7 +55,7 @@ const rules: FormRules = {
         Content(Markdown)
         <EmojiDropdown />
       </template>
-      <NInput v-model:value="message.content" placeholder="Hello, world!" type="textarea" show-count maxlength="256" clearable />
+      <NInput v-model:value="message.content" placeholder="Hello, world!" type="textarea" show-count maxlength="233" clearable />
     </NFormItem>
   </NForm>
 </template>
