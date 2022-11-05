@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NList } from 'naive-ui'
+import { NList, NListItem } from 'naive-ui'
 import { computed } from 'vue'
 import type { MessageFetch } from '../api'
 import { api } from '../api'
@@ -22,10 +22,11 @@ api.get<MessageFetch[]>('messages').then((m) => {
 
 <template>
   <NList v-if="messages" :show-divider="false">
-    <Message
+    <NListItem
       v-for="m in messages"
       :key="m.id"
-      :message="m"
-    />
+    >
+      <Message :message="m" />
+    </NListItem>
   </NList>
 </template>
