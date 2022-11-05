@@ -21,6 +21,7 @@ function handleClick(emoji: Emoji) {
           <template #trigger>
             <NImage
               preview-disabled
+              style="cursor: pointer"
               :src="emoji.url"
               :width="EMOJI_SIZE_PX"
               :height="EMOJI_SIZE_PX"
