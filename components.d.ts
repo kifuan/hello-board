@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     Message: typeof import('./src/components/Message.vue')['default']
     MessageList: typeof import('./src/components/MessageList.vue')['default']
     MessageSkeleton: typeof import('./src/components/MessageSkeleton.vue')['default']
+    NA: typeof import('naive-ui')['NA']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
