@@ -3,11 +3,13 @@ import { useMessageStore } from '../stores/message'
 
 const store = useMessageStore()
 const loading = ref(true)
-store.init().then(() => {
-  loading.value = false
-})
 
 const { page, pageInfo } = storeToRefs(store)
+
+onMounted(async () => {
+  await store.init()
+  loading.value = false
+})
 </script>
 
 <template>
