@@ -1,12 +1,13 @@
 body {
   font-family: 'Noto Sans SC', serif;
+  
+  background-color: #fafafa;
 }
 
 #app {
-  background-color: #fafafa;
-  padding: 2rem 0.5rem;
+  padding: 2rem 1rem;
 }
 
-html, body, #app {
+html, body {
   height: 100%;
 }
