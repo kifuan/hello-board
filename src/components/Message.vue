@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NAvatar, NButton, NListItem, NP, NSpace, NThing, NTime } from 'naive-ui'
+import { NAvatar, NButton, NP, NSpace, NThing, NTime } from 'naive-ui'
 import type { MessageFetch } from '../api'
 import { createReplyDialog } from '../util/reply-dialog'
 import MarkdownPreviewer from './MarkdownPreviewer.vue'

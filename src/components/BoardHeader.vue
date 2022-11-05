@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NButton, NH1, NH2, NH3, NSpace } from 'naive-ui'
+import { NButton, NH3, NSpace } from 'naive-ui'
 import { useMessageStore } from '../stores/message'
 import { createReplyDialog } from '../util/reply-dialog'
 
