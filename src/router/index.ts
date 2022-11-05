@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useProviderStore } from '../stores/provider'
 
-export default createRouter({
+export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
@@ -16,4 +17,12 @@ export default createRouter({
       redirect: '/404',
     },
   ],
+})
+
+router.beforeEach(() => {
+  useProviderStore().loadingBar.start()
+})
+
+router.afterEach(() => {
+  useProviderStore().loadingBar.finish()
 })
