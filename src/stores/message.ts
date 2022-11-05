@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { MessageFetch } from '../api'
+import { api } from '../api'
 
 export const useMessageStore = defineStore('message', () => {
   // Raw messages got from backend.
@@ -10,8 +11,15 @@ export const useMessageStore = defineStore('message', () => {
    * Sets the messages.
    * @param m the messages.
    */
-  function setMessages(m: MessageFetch[]) {
-    messages.value = m
+  async function fetchMessages() {
+    const res = await api.get<MessageFetch[]>('messages')
+    messages.value = res.data
+  }
+
+  // Inserts after posting to server
+  // to avoid get the same message array twice.
+  function insertCachedMessage(m: MessageFetch) {
+    messages.value.unshift(m)
   }
 
   /**
@@ -34,5 +42,5 @@ export const useMessageStore = defineStore('message', () => {
     return replies.value[id] ?? []
   }
 
-  return { messages, setMessages, getReplies }
+  return { messages, insertCachedMessage, fetchMessages, getReplies }
 })

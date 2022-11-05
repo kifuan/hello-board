@@ -8,8 +8,7 @@ import MessageList from './MessageList.vue'
 
 const store = useMessageStore()
 const loading = ref(true)
-api.get<MessageFetch[]>('messages').then((m) => {
-  store.setMessages(m.data)
+store.fetchMessages().then(() => {
   loading.value = false
 })
 </script>

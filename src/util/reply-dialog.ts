@@ -22,7 +22,7 @@ export function createReplyDialog(reply: number, title: string) {
         return false
       }
       const res = await api.post<MessageFetch>('messages', replyStore.message)
-      messageStore.setMessages([res.data, ...messageStore.messages])
+      messageStore.insertCachedMessage(res.data)
     },
   })
 }
