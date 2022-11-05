@@ -22,9 +22,13 @@ export function createReplyDialog(reply: number, title: string) {
         return false
       }
       dialog.loading = true
-      const res = await api.post<MessageFetch>('messages', replyStore.message)
-      dialog.loading = false
-      messageStore.insertCachedMessage(res.data)
+      try {
+        const res = await api.post<MessageFetch>('messages', replyStore.message)
+        messageStore.insertCachedMessage(res.data)
+      }
+      finally {
+        dialog.loading = false
+      }
     },
   })
 }
