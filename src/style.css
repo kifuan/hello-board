@@ -3,5 +3,6 @@ body {
 }
 
 #app {
-  padding-top: 2rem;
+  background-color: #fafafa;
+  padding: 2rem 0;
 }
