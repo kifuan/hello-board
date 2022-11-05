@@ -20,7 +20,7 @@ onMounted(async () => {
 <template>
   <NCard :segmented="{ content: 'soft' }" hoverable size="huge" content-style="padding-top: -100px">
     <template #header>
-      <NA href="https://github.com/kifuan/hello-board">
+      <NA style="text-decoration: none" href="https://github.com/kifuan/hello-board">
         <NH1>
           Hello!
         </NH1>
