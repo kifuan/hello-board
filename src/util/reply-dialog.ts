@@ -11,7 +11,7 @@ export function createReplyDialog(reply: number, title: string) {
   const replyStore = useReplyStore()
   const messageStore = useMessageStore()
 
-  provider.dialog.create({
+  const dialog = provider.dialog.create({
     title,
     content: () => h(ReplyForm, { reply }),
     maskClosable: false,
@@ -21,7 +21,9 @@ export function createReplyDialog(reply: number, title: string) {
         provider.message.error('Validation failed.')
         return false
       }
+      dialog.loading = true
       const res = await api.post<MessageFetch>('messages', replyStore.message)
+      dialog.loading = false
       messageStore.insertCachedMessage(res.data)
     },
   })
