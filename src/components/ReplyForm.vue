@@ -44,12 +44,12 @@ const rules: FormRules = {
       <NInput v-model:value="message.email" placeholder="name@example.com" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
     </NFormItem>
     <NFormItem path="name" label="Name">
-      <NInput v-model:value="message.name" placeholder="Foo Bar" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
+      <NInput v-model:value="message.name" placeholder="Name" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
     </NFormItem>
     <NFormItem path="site" label="Your site">
       <NInput v-model:value="message.site" placeholder="https://example.com" type="text" show-count maxlength="64" clearable @keydown.enter.prevent />
     </NFormItem>
-    <NFormItem path="mailNotice" label="Mail notice">
+    <NFormItem path="mailNotice" label="Receive email notifications">
       <NSwitch v-model:value="message.mailNotice" />
     </NFormItem>
     <NFormItem path="content" label="Content(Markdown)">
