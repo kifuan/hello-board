@@ -33,6 +33,7 @@ declare module '@vue/runtime-core' {
     NNumberAnimation: typeof import('naive-ui')['NNumberAnimation']
     NP: typeof import('naive-ui')['NP']
     NPagination: typeof import('naive-ui')['NPagination']
+    NResult: typeof import('naive-ui')['NResult']
     NSkeleton: typeof import('naive-ui')['NSkeleton']
     NSpace: typeof import('naive-ui')['NSpace']
     NSwitch: typeof import('naive-ui')['NSwitch']
@@ -41,5 +42,7 @@ declare module '@vue/runtime-core' {
     NTime: typeof import('naive-ui')['NTime']
     NTooltip: typeof import('naive-ui')['NTooltip']
     ReplyForm: typeof import('./src/components/ReplyForm.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
