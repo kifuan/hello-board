@@ -10,20 +10,25 @@ const { reply } = withDefaults(defineProps<{
 })
 
 const store = useMessageStore()
-const { loading: compLoading } = storeToRefs(useMessageCompStore())
+const compStore = useMessageCompStore()
+const { loadingMessage } = storeToRefs(compStore)
 const messages = computed(() => store.getReplies(reply))
 
 const AsyncMessage = defineAsyncComponent(() => import('./Message.vue'))
+
+onMounted(() => {
+  compStore.finishLoadingList()
+})
 </script>
 
 <template>
-  <NList v-show="loading || compLoading" :show-divider="false">
+  <NList v-show="loading || loadingMessage" :show-divider="false">
     <NListItem v-for="i in 5" :key="i">
       <MessageSkeleton />
     </NListItem>
   </NList>
 
-  <NList v-show="!loading && !compLoading" :show-divider="false">
+  <NList v-show="!loading && !loadingMessage" :show-divider="false">
     <NListItem
       v-for="m in messages"
       :key="m.id"

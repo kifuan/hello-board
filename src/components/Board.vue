@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { useMessageStore } from '../stores/message'
+import { useMessageCompStore } from '../stores/message-comp'
 
 const store = useMessageStore()
+const compStore = useMessageCompStore()
 const loading = ref(true)
 
 const { page, pageInfo } = storeToRefs(store)
+const { loadingList } = storeToRefs(compStore)
+
+const AsyncMessageList = defineAsyncComponent(() => import('./MessageList.vue'))
 
 onMounted(async () => {
   await store.init()
@@ -22,11 +27,12 @@ onMounted(async () => {
     </template>
 
     <BoardHeader />
-    <MessageList :loading="loading" />
+    <AsyncMessageList :loading="loading" />
 
     <template #footer>
       <NSpace justify="center">
         <NPagination
+          v-if="!loading && !loadingList"
           v-model:page="page"
           :item-count="pageInfo.rootCount"
           :page-size="pageInfo.pageSize"

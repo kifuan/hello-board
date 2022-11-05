@@ -12,7 +12,7 @@ const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
 const store = useMessageCompStore()
 
 onMounted(() => {
-  store.finishLoading()
+  store.finishLoadingMessage()
 })
 </script>
 

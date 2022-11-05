@@ -1,9 +1,14 @@
 export const useMessageCompStore = defineStore('message-comp', () => {
-  const loading = ref(true)
+  const loadingList = ref(true)
+  const loadingMessage = ref(true)
 
-  function finishLoading() {
-    loading.value = false
+  function finishLoadingList() {
+    loadingList.value = false
   }
 
-  return { loading, finishLoading }
+  function finishLoadingMessage() {
+    loadingMessage.value = false
+  }
+
+  return { loadingMessage, loadingList, finishLoadingMessage, finishLoadingList }
 })
