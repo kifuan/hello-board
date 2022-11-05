@@ -8,13 +8,15 @@ import MessageList from './MessageList.vue'
 const { message } = defineProps<{
   message: MessageFetch
 }>()
+
+const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
 </script>
 
 <template>
   <NThing content-indented>
     <template #avatar>
       <NAvatar
-        :src="message.avatar"
+        :src="GRAVATAR_URL + message.avatar"
         :size="48"
         round
       />

@@ -2,18 +2,9 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { MessageFetch } from '../api'
 
-const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
-
 export const useMessageStore = defineStore('message', () => {
   // Raw messages got from backend.
-  const rawMessages = ref<MessageFetch[]>([])
-
-  /**
-   * Messages that have avatar URL converted.
-   */
-  const messages = computed(() => rawMessages.value.map((m) => {
-    return { ...m, avatar: GRAVATAR_URL + m.avatar }
-  }))
+  const messages = ref<MessageFetch[]>([])
 
   /**
    * An object that maps id to messages(not raw).
@@ -26,7 +17,7 @@ export const useMessageStore = defineStore('message', () => {
   })
 
   function setMessages(m: MessageFetch[]) {
-    rawMessages.value = m
+    messages.value = m
   }
 
   /**
