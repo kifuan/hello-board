@@ -1,16 +1,55 @@
-# Vue 3 + TypeScript + Vite
+# Hello Board
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A message board based on `Vue.js` and `Golang`.
 
-## Recommended IDE Setup
+# Features
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
++ Avatars
 
-## Type Support For `.vue` Imports in TS
+  Based on `Gravatar`, we can show your avatar by email. Besides, your email **won't be displayed**.
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
++ Email Notifications
+  
+  Anyone who leaves a message can choose whether or not to receive **email notifications**.
+  
+  The owner can also receive notifications when **a message is posted, not replying to others**.
+  
++ Unsubscribe Email Notifications
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+  Notifications can be unsubscribed via **a link at the bottom of the email** we sent.
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+  The owner can also turn it down by **configuring the backend server**.
+
++ Markdown Content
+
+  We support Markdown content, which means you can post your code, images, etc.
+
++ Custom Emojis
+
+  Custom emojis are supported. You can see them under `public/emojis`.
+
+  If it is an infringement to use them, please contact me to delete them. I will not use it commercially.
+
+# Installation
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/kifuan/hello-board.git
+   ```
+
+2. Install requirements and build:
+
+   ```bash
+   pnpm i
+   pnpm build
+   ```
+
+3. Copy `dist` folder, deploying by `Nginx` or others.
+
+# License
+
+This project is licensed under the MIT License.
+
+Note: this license **DO NOT include emojis under `public/emojis`**.
+

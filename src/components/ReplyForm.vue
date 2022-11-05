@@ -3,6 +3,7 @@ import type { FormItemRule, FormRules } from 'naive-ui'
 import { NForm, NFormItem, NInput, NSwitch } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { useReplyStore } from '../stores/reply'
+import EmojiDropdown from './EmojiDropdown.vue'
 
 const { reply } = defineProps<{
   reply: number
@@ -52,7 +53,11 @@ const rules: FormRules = {
     <NFormItem path="mailNotice" label="Receive email notifications">
       <NSwitch v-model:value="message.mailNotice" />
     </NFormItem>
-    <NFormItem path="content" label="Content(Markdown)">
+    <NFormItem path="content">
+      <template #label>
+        Content(Markdown)
+        <EmojiDropdown />
+      </template>
       <NInput v-model:value="message.content" placeholder="Hello, world!" type="textarea" show-count maxlength="256" clearable />
     </NFormItem>
   </NForm>
