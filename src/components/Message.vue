@@ -47,7 +47,8 @@ const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
     </template>
 
     <template #action>
-      <MessageList :reply="message.id" />
+      <!-- When Message component is rendered, it should have been loaded already. -->
+      <MessageList :reply="message.id" :loading="false" />
     </template>
 
     <MarkdownPreviewer :content="message.content" />
