@@ -7,6 +7,9 @@ export const useMessageStore = defineStore('message', () => {
   // Raw messages got from backend.
   const messages = ref<MessageFetch[]>([])
 
+  // Whether the store is initialized.
+  const initialized = ref(false)
+
   // Note that it starts from 1.
   const _page = ref(1)
   const page = computed({
@@ -30,6 +33,7 @@ export const useMessageStore = defineStore('message', () => {
     await setPage(1)
     const res = await api.get<PageInfo>('messages/page_info')
     pageInfo.value = res.data
+    initialized.value = true
   }
 
   // Inserts after posting to server
@@ -62,5 +66,5 @@ export const useMessageStore = defineStore('message', () => {
     return replies.value[id] ?? []
   }
 
-  return { messages, page, pageInfo, insertCachedMessage, init, getReplies }
+  return { messages, initialized, page, pageInfo, insertCachedMessage, init, getReplies }
 })
