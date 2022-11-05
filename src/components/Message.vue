@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NAvatar, NButton, NP, NSpace, NThing, NTime } from 'naive-ui'
+import { NAvatar, NButton, NP, NSpace, NTag, NThing, NTime } from 'naive-ui'
 import type { MessageFetch } from '../api'
 import { createReplyDialog } from '../util/reply-dialog'
 import MarkdownPreviewer from './MarkdownPreviewer.vue'
@@ -24,7 +24,7 @@ const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
 
     <template #header>
       <NSpace :size="0" vertical>
-        <NSpace align="end">
+        <NSpace align="end" size="small">
           <NButton text :href="message.site" style="font-weight: 600; font-size: medium">
             {{ message.name }}
           </NButton>
@@ -32,10 +32,14 @@ const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
           <NP :depth="3">
             #{{ message.id }}
           </NP>
+
+          <NTag v-if="message.owner" round :bordered="false" type="success" size="small">
+            Owner
+          </NTag>
         </NSpace>
 
         <NP :depth="3">
-          <NTime :time="message.date" type="date" />
+          <NTime :time="message.date" type="datetime" />
         </NP>
       </NSpace>
     </template>

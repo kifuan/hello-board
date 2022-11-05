@@ -48,9 +48,15 @@ export interface Message {
    * Whether the person wants to be noticed.
    */
   mailNotice: boolean
+
+  /**
+   * Whether the person is owner.
+   * It will only be undefined or true.
+   */
+  owner?: true
 }
 
-export type MessageUpload = Omit<Message, 'id' | 'avatar' | 'date'>
+export type MessageUpload = Omit<Message, 'id' | 'avatar' | 'date' | 'owner'>
 
 export type MessageFetch = Omit<Message, 'email' | 'mailNotice'>
 
