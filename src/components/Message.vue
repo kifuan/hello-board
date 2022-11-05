@@ -7,6 +7,8 @@ const { message } = defineProps<{
 }>()
 
 const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
+
+const AsyncMarkdownPreviewer = defineAsyncComponent(() => import('./MarkdownPreviewer.vue'))
 </script>
 
 <template>
@@ -52,6 +54,6 @@ const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
       <MessageList :reply="message.id" :loading="false" />
     </template>
 
-    <MarkdownPreviewer :content="message.content" />
+    <AsyncMarkdownPreviewer :content="message.content" />
   </NThing>
 </template>

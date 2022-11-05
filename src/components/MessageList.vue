@@ -10,6 +10,8 @@ const { reply } = withDefaults(defineProps<{
 
 const store = useMessageStore()
 const messages = computed(() => store.getReplies(reply))
+
+const AsyncMessage = defineAsyncComponent(() => import('./Message.vue'))
 </script>
 
 <template>
@@ -25,7 +27,7 @@ const messages = computed(() => store.getReplies(reply))
         v-for="m in messages"
         :key="m.id"
       >
-        <Message :message="m" />
+        <AsyncMessage :message="m" />
       </NListItem>
     </template>
   </NList>
