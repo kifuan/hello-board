@@ -1,26 +1,19 @@
 <script setup lang="ts">
 import { NList, NListItem } from 'naive-ui'
-import { computed, ref } from 'vue'
-import type { MessageFetch } from '../api'
-import { api } from '../api'
+import { computed } from 'vue'
 import { useMessageStore } from '../stores/message'
 import Message from './Message.vue'
 import MessageSkeleton from './MessageSkeleton.vue'
 
 const { reply } = withDefaults(defineProps<{
   reply?: number
+  loading: boolean
 }>(), {
   reply: -1,
 })
 
 const store = useMessageStore()
-const messages = computed(() => store.getRootReplies(reply))
-const loading = ref(true)
-
-api.get<MessageFetch[]>('messages').then((m) => {
-  store.setMessages(m.data)
-  loading.value = false
-})
+const messages = computed(() => store.getReplies(reply))
 </script>
 
 <template>

@@ -7,54 +7,32 @@ export const useMessageStore = defineStore('message', () => {
   const messages = ref<MessageFetch[]>([])
 
   /**
-   * An object that maps id to messages(not raw).
+   * Sets the messages.
+   * @param m the messages.
    */
-  const idMessages = computed<Record<number, MessageFetch>>(() => {
-    return messages.value.reduce((result, message) => {
-      Reflect.set(result, message.id, message)
-      return result
-    }, {})
-  })
-
   function setMessages(m: MessageFetch[]) {
     messages.value = m
   }
 
   /**
-   * Gets the root message that the specified message replied to.
-   * @param message the message to get.
-   * @param firstCall whether the first time to call this function, you should not modify this.
-   * @returns the root message id it replies to.
-   */
-  function getRootReplyId(message: MessageFetch, firstCall = true): number {
-    if (message.reply === -1)
-      return firstCall ? -1 : message.id
-
-    return getRootReplyId(idMessages.value[message.reply], false)
-  }
-
-  /**
-   * An object that maps the ids of root messages with those who replied to it,
-   * including indirect replies.
+   * An object that maps the ids of root messages with those who replies to it.
    */
   const replies = computed<Record<number, MessageFetch[]>>(() => {
     return messages.value.reduce((result, message) => {
-      const rootReply = getRootReplyId(message)
-      const prevReplies = Reflect.get(result, rootReply) ?? []
-      Reflect.set(result, rootReply, [...prevReplies, message])
+      const prevReplies = Reflect.get(result, message.reply) ?? []
+      Reflect.set(result, message.reply, [...prevReplies, message])
       return result
     }, {})
   })
 
   /**
-   * Gets replies for a root message, which
-   * means that its `reply` property must be `-1`.
-   * @param id the id of specified message.
-   * @returns the replies to this message.
+   * Gets replies for specified message.
+   * @param id specified message id.
+   * @returns the replies of it.
    */
-  function getRootReplies(id: number): MessageFetch[] {
+  function getReplies(id: number): MessageFetch[] {
     return replies.value[id] ?? []
   }
 
-  return { messages, setMessages, getRootReplies }
+  return { messages, setMessages, getReplies }
 })

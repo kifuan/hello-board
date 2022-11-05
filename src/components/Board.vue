@@ -1,9 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { api } from '../api'
+import type { MessageFetch } from '../api'
+import { useMessageStore } from '../stores/message'
 import BoardHeader from './BoardHeader.vue'
 import MessageList from './MessageList.vue'
+
+const store = useMessageStore()
+const loading = ref(true)
+api.get<MessageFetch[]>('messages').then((m) => {
+  store.setMessages(m.data)
+  loading.value = false
+})
 </script>
 
 <template>
   <BoardHeader />
-  <MessageList />
+  <MessageList :loading="loading" />
 </template>
