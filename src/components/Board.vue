@@ -31,8 +31,8 @@ const { page, pageInfo } = storeToRefs(store)
       <NSpace justify="center">
         <NPagination
           v-model:page="page"
-          :item-count="pageInfo.total"
-          :page-size="pageInfo.size"
+          :item-count="pageInfo.rootCount"
+          :page-size="pageInfo.pageSize"
         />
       </NSpace>
     </template>

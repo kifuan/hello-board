@@ -9,7 +9,7 @@ const store = useMessageStore()
 <template>
   <NSpace justify="space-between">
     <NH3>
-      <NNumberAnimation :from="0" :to="store.pageInfo.total" />
+      <NNumberAnimation :from="0" :to="store.pageInfo.totalCount" />
       Messages
     </NH3>
     <NButton type="success" ghost @click="createReplyDialog(-1, 'Add a message')">

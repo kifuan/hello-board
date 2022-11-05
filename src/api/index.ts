@@ -5,12 +5,17 @@ export interface PageInfo {
   /**
    * Page size.
    */
-  size: number
+  pageSize: number
 
   /**
-   * Total count.
+   * Total messages count.
    */
-  total: number
+  totalCount: number
+
+  /**
+   * Root messages count, used for pagination.
+   */
+  rootCount: number
 }
 
 export interface Message {
