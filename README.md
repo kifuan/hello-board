@@ -30,7 +30,7 @@ Here is the [backend server repository](https://github.com/kifuan/hello-board-se
 
   Custom emojis are supported. You can see them under `public/emojis`.
 
-  I won't use them commercially. If it is still an infringement to use them, please contact me to delete them.
+  I won't use them commercially. If it is still an infringement, please contact me to delete them.
 
 # Installation
 
