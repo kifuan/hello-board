@@ -8,7 +8,7 @@ const clipboard = useClipboard()
 const provider = useProviderStore()
 
 function handleClick(emoji: Emoji) {
-  clipboard.copy(`![${emoji.name}](${emoji.url})`)
+  clipboard.copy(`![](@${emoji.id})`)
   provider.message.success('Copied!')
 }
 </script>
