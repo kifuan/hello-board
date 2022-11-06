@@ -16,9 +16,8 @@ const messages = computed(() => store.getReplies(reply))
 
 const AsyncMessage = defineAsyncComponent(() => import('./Message.vue'))
 
-onMounted(async () => {
+onMounted(() => {
   compStore.finishLoadingList()
-  await store.init()
 })
 </script>
 
