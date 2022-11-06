@@ -16,19 +16,35 @@ const messages = computed(() => store.getReplies(reply))
 
 const AsyncMessage = defineAsyncComponent(() => import('./Message.vue'))
 
+// I don't use a single complex boolean expression
+// to make it easier to understand.
+const showSkeleton = computed(() => {
+  // Store is initialized and message component is loaded.
+  if (store.initialized && loadingMessage.value)
+    return false
+
+  // The store is initialized but the messages array is empty.
+  // So the message component won't be loaded because there is no data.
+  // At this moment, the skeleton should also not be shown.
+  if (messages.value.length === 0 && store.initialized)
+    return false
+
+  return true
+})
+
 onMounted(() => {
   compStore.finishLoadingList()
 })
 </script>
 
 <template>
-  <NList v-show="!initialized || loadingMessage" :show-divider="false">
+  <NList v-show="showSkeleton" :show-divider="false">
     <NListItem v-for="i in 5" :key="i">
       <MessageSkeleton />
     </NListItem>
   </NList>
 
-  <NList v-show="initialized && !loadingMessage" :show-divider="false">
+  <NList v-show="!showSkeleton" :show-divider="false">
     <NListItem
       v-for="m in messages"
       :key="m.id"
