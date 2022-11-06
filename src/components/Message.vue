@@ -56,7 +56,7 @@ onMounted(() => {
 
     <template #action>
       <!-- When Message component is rendered, it should have been loaded already. -->
-      <MessageList :reply="message.id" :loading="false" />
+      <MessageList :reply="message.id" />
     </template>
 
     <MarkdownPreviewer :content="message.content" />
