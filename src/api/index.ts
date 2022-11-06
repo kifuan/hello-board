@@ -79,7 +79,6 @@ export type MessageFetch = Omit<Message, 'email' | 'mailNotice'>
 
 export const api = axios.create({
   baseURL: '/api/',
-  timeout: 5000,
 })
 
 api.interceptors.response.use(res => res, async (err) => {
