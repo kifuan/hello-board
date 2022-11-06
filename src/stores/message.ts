@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { api } from '../api'
 import type { MessageFetch, PageInfo } from '../api'
+import { withLoadingBar } from '../util/with-loading-bar'
 
 export const useMessageStore = defineStore('message', () => {
   // Raw messages got from backend.
@@ -23,16 +24,22 @@ export const useMessageStore = defineStore('message', () => {
     rootCount: 0,
   })
 
-  async function setPage(p: number) {
+  async function setPageNoLoadingBar(p: number) {
     _page.value = p
     const res = await api.get(`messages?page=${p - 1}`)
     messages.value = res.data
   }
 
+  async function setPage(p: number) {
+    await withLoadingBar(() => setPageNoLoadingBar(p))
+  }
+
   async function init() {
-    await setPage(1)
-    const res = await api.get<PageInfo>('messages/page_info')
-    pageInfo.value = res.data
+    pageInfo.value = await withLoadingBar(async () => {
+      await setPageNoLoadingBar(1)
+      const res = await api.get<PageInfo>('messages/page_info')
+      return res.data
+    })
     initialized.value = true
   }
 
