@@ -1,19 +1,12 @@
 <script setup lang="ts">
 import type { MessageFetch } from '../api'
 import { createReplyDialog } from '../util/reply-dialog'
-import { useMessageCompStore } from '../stores/message-comp'
 
 const { message } = defineProps<{
   message: MessageFetch
 }>()
 
 const GRAVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
-
-const store = useMessageCompStore()
-
-onMounted(() => {
-  store.finishLoadingMessage()
-})
 </script>
 
 <template>
