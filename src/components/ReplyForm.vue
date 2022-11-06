@@ -7,9 +7,8 @@ const { reply } = defineProps<{
 }>()
 
 const store = useReplyStore()
-store.clearMessage()
-store.message.reply = reply
 const { message } = storeToRefs(store)
+message.value.reply = reply
 
 const rules: FormRules = {
   name: {
