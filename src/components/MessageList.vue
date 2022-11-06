@@ -20,7 +20,7 @@ const AsyncMessage = defineAsyncComponent(() => import('./Message.vue'))
 // to make it easier to understand.
 const showSkeleton = computed(() => {
   // Store is initialized and message component is loaded.
-  if (store.initialized && loadingMessage.value)
+  if (initialized.value && !loadingMessage.value)
     return false
 
   // The store is initialized but the messages array is empty.
