@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { createMarkdownIt } from '../util/markdown'
+import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 
 const { content } = defineProps<{
   content: string
 }>()
 
-const md = createMarkdownIt()
-
-const html = computed(() => md.render(content))
+const html = computed(() => DOMPurify.sanitize(marked.parse(content), {
+  USE_PROFILES: {
+    html: true,
+  },
+}))
 </script>
 
 <template>
