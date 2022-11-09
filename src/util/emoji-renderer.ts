@@ -12,7 +12,7 @@ export const emojiRenderer: marked.RendererObject = {
     if (emoji === undefined) {
       // We don't need it to be responsive.
       const { message } = useProviderStore()
-      message.warning(`Detected emoji pattern, but id ${id} is invalid.`)
+      message.warning(`Detected emoji pattern, but id ${href} is invalid.`)
       return false
     }
 
