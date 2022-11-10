@@ -4,7 +4,6 @@ import ReplyForm from '../components/ReplyForm.vue'
 import { useMessageStore } from '../stores/message'
 import { useProviderStore } from '../stores/provider'
 import { useReplyStore } from '../stores/reply'
-import { withLoadingBar } from './with-loading-bar'
 
 export function createReplyDialog(reply: number, title: string) {
   const provider = useProviderStore()
@@ -23,10 +22,9 @@ export function createReplyDialog(reply: number, title: string) {
       }
       dialog.loading = true
       try {
-        messageStore.insertCachedMessage(await withLoadingBar(async () => {
-          const res = await api.post<MessageFetch>('messages', replyStore.message)
-          return res.data
-        }))
+        const res = await api.post<MessageFetch>('messages', replyStore.message)
+        messageStore.insertCachedMessage(res.data)
+        provider.message.success('Submitted successfully.')
       }
       finally {
         dialog.loading = false
