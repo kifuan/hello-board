@@ -16,6 +16,6 @@ export const emojiRenderer: marked.RendererObject = {
       return false
     }
 
-    return `<img alt=${emoji.name} src=${emoji.url} style="width: ${EMOJI_SIZE_PX}px; height: ${EMOJI_SIZE_PX}px;vertical-align: bottom; padding: 0 2px;">`
+    return `<img alt="${emoji.name}" src="${emoji.url}" style="width: ${EMOJI_SIZE_PX}px; height: ${EMOJI_SIZE_PX}px;vertical-align: bottom; padding: 0 2px;">`
   },
 }
